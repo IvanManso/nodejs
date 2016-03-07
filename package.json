@@ -1,0 +1,23 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "nodejs practise",
+  "main": "bucle_asincrono.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivan Manso",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanManso/nodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IvanManso/nodejs/issues"
+  },
+  "homepage": "https://github.com/IvanManso/nodejs#readme",
+  "dependencies": {
+    "async": "^1.5.2",
+    "chance": "^1.0.1"
+  }
+}
