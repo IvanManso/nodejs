@@ -13,4 +13,14 @@ var users = [{
 	age:25
 }];
 
-module.exports = users;
+var user = {
+	getUsers: function(cb){
+		//imaginamos que lee un fichero
+		var usuariosLeidos = users;
+
+		//devuelvo users
+		cb(null, users);
+	}
+};
+
+module.exports = user;
