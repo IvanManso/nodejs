@@ -1,18 +1,20 @@
 var express = require('express');
 var router = express.Router();
-var user = require("../models/userModel");
+var mongoose = require("mongoose");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get('/form', function(req, res, next) {
-
-	user.getUsers(function(err, users){
-		//cuando estén disponibles los mando a la vista
-		res.render("user_form", {users: users});
+router.get("/form", function(req, res, next){
+	var User = mongoose.model("User");
+	User.list(function(err, rows){
+		res.render("user_form",{users:rows});
 	});
 });
 
+//user.getUsers(function(err,users){
+
+//});
 module.exports = router;

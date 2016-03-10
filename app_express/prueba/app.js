@@ -5,9 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//Modelos
+require("./models/userModel");
+
+
+//Rutas de web
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var admin = require('./routes/admin');
+
+ //Rutas  de API v1
+ var apiUsers = require("./routes/api/v1/users");
 
 
 var app = express();
@@ -35,6 +43,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use("/admin", admin); //cuando sólo utilizamos la variable una vez con poner el require dentro sirve
+
+//Rutas de API V1
+app.use("/api/v1/users", apiUsers);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -8,20 +8,38 @@ var mongoose = require("mongoose");
 //Creo el esquema
 
 var userSchema = mongoose.Schema({
-	name: String,
-	age: Number
+    name: String,
+    age: Number
 });
+userSchema.statics.list = function(cb) {
+	//preparamos la query sin ejecutarla (no ponemos callback a find)
+    var query = User.find({});
+    //añadimos más parámetros a la query
+    query.sort("name");
+
+
+    //la ejecutamos
+    query.exec(function(err, rows) {
+        if (err) {
+            cb(err);
+            return;
+        }
+        cb(null, rows);
+        return;
+    });
+};
 
 //Lo registro en mongoose
 
-mongoose.model("User", userSchema);
+var User = mongoose.model("User", userSchema);
 
 
 
-var user = {
+
+/*var user = {
 	getUsers: function(cb){
 		//imaginamos que lee un fichero
-		/*
+
 		conn.db.collection('agentes').find({}).toArray(function(err, usuariosLeidos) {
 		if (err){
 			cb(err); //añadir siempre un return cuando tenemos un callback metido en una condición, ya que debe terminar la función
@@ -30,7 +48,7 @@ var user = {
 			cb(null, usuariosLeidos);
 			return; //para marcar al finalización de la función
 		});
-		*/
+
 
 		//Con mongoose
 		var User = mongoose.model("User");
@@ -46,6 +64,6 @@ var user = {
 
 	}
 
-};
+};*/
 
-module.exports = user;
+//module.exports = User;
