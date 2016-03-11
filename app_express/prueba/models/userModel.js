@@ -11,11 +11,11 @@ var userSchema = mongoose.Schema({
     name: String,
     age: Number
 });
-userSchema.statics.list = function(cb) {
+userSchema.statics.list = function(sort, cb) {
 	//preparamos la query sin ejecutarla (no ponemos callback a find)
     var query = User.find({});
     //añadimos más parámetros a la query
-    query.sort("name");
+    query.sort(sort);
 
 
     //la ejecutamos
