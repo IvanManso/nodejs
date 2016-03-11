@@ -7,14 +7,14 @@ var User = mongoose.model("User");
 var auth = require("../../../lib/auth"); //nos traemos el módulo auth.js para que nos los traiga y usarlo donde quiera
 
 //router.use(auth("admin", "pass2")); //pasamos a la función un usar y pass
- //llamamos a la función auth que queremos que aparezca (middleware)
+//llamamos a la función auth que queremos que aparezca (middleware)
 
 
 
 /* GET users listing. */
 router.get("/", auth("admin", "pass"), function(req, res) { //podemons meter varios middleware en cuanto coincida esa ruta "/"
 
-	var sort = req.query.sort || "age";
+    var sort = req.query.sort || "age";
 
     User.list(sort, function(err, rows) {
         if (err) {
